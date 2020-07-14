@@ -3,17 +3,42 @@
 <head>
 	<meta charset="utf-8">
 	<script>
-		// TODO: create a handler
+	function setSearchEngine() {
+		let searchEngineObject = {
+		"Google":  "https://www.google.com/search",
+		"DuckDuckGo": "https://duckduckgo.com/",
+		"Bing": "https://www.bing.com/search",
+		"Ask": "https://www.ask.com/web",
+		"Yahoo": "https://search.yahoo.com/",
+		"DogPile": "https://www.dogpile.com/"
+		};
+	let form = document.getElementById('searchForm');
+	let engineSelector = document.querySelector("[name=engine]:checked");
+	let selectedEngine = engineSelector.value;
+	let selectedEngineUrl = searchEngineObject[selectedEngine];
+	form.setAttribute("action", selectedEngineUrl);
+
+	};
+	let form = document.getElementById('searchForm');
     window.addEventListener("load", function(){
-        // TODO: register the handler
+		window.addEventListener("submit", setSearchEngine());
+
     });
 	</script>
 </head>
 
 <body>
 
-	<form id="searchForm">
-    <!-- TODO: add form elements -->
+	<form id="searchForm" action="">
+	<!-- TODO: add form elements -->
+	<input type="text" name="q"/>
+	<label> Google <input type="radio" name="engine" value="Google"/> </label>
+	<label> DuckDuckGo <input type="radio" name="engine" value="DuckDuckGo"/> </label>
+	<label> Bing <input type="radio" name="engine" value="Bing"/> </label>
+	<label> Ask <input type="radio" name="engine" value="Ask"/> </label>
+	<label> Yahoo <input type="radio" name="engine" value="Yahoo"/> </label>
+	<label> DogPile <input type="radio" name="engine" value="DogPile"/> </label>
+	<input type = "submit" value = "Go!"/>
 	</form>
 
 </body>
